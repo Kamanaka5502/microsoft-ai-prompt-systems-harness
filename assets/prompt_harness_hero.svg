@@ -1,0 +1,24 @@
+<svg width="1200" height="520" viewBox="0 0 1200 520" xmlns="http://www.w3.org/2000/svg">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#06111f"/><stop offset=".55" stop-color="#12355a"/><stop offset="1" stop-color="#09111f"/></linearGradient></defs>
+<rect width="1200" height="520" rx="28" fill="url(#g)"/>
+<g opacity=".18" stroke="#7dd3fc"><path d="M0 110H1200M0 220H1200M0 330H1200M0 440H1200"/><path d="M150 0V520M300 0V520M450 0V520M600 0V520M750 0V520M900 0V520M1050 0V520"/></g>
+<circle cx="1000" cy="120" r="150" fill="#2563eb" opacity=".16"/><circle cx="130" cy="430" r="170" fill="#7c3aed" opacity=".16"/>
+<text x="70" y="92" fill="#e0f2fe" font-family="Segoe UI,Arial" font-size="40" font-weight="800">Microsoft AI Prompt Systems Harness</text>
+<text x="72" y="132" fill="#bae6fd" font-family="Segoe UI,Arial" font-size="21">Prompt frameworks • JSON schemas • failure analysis • repeatable generation</text>
+<rect x="70" y="190" width="1060" height="210" rx="22" fill="#020617" opacity=".78" stroke="#38bdf8"/>
+<g font-family="Segoe UI,Arial" font-weight="700" font-size="17">
+<rect x="110" y="235" width="150" height="62" rx="14" fill="#0f172a" stroke="#22d3ee"/><text x="136" y="272" fill="#e0f2fe">Intent</text>
+<path d="M280 266H350" stroke="#67e8f9" stroke-width="3"/><path d="M350 266L337 257M350 266L337 275" stroke="#67e8f9" stroke-width="3"/>
+<rect x="370" y="235" width="210" height="62" rx="14" fill="#0f172a" stroke="#a78bfa"/><text x="395" y="272" fill="#ede9fe">Prompt Framework</text>
+<path d="M600 266H670" stroke="#67e8f9" stroke-width="3"/><path d="M670 266L657 257M670 266L657 275" stroke="#67e8f9" stroke-width="3"/>
+<rect x="690" y="235" width="175" height="62" rx="14" fill="#0f172a" stroke="#22d3ee"/><text x="720" y="272" fill="#e0f2fe">JSON Packet</text>
+<path d="M885 266H955" stroke="#67e8f9" stroke-width="3"/><path d="M955 266L942 257M955 266L942 275" stroke="#67e8f9" stroke-width="3"/>
+<rect x="975" y="235" width="125" height="62" rx="14" fill="#0f172a" stroke="#34d399"/><text x="1000" y="272" fill="#dcfce7">Proof</text>
+<rect x="110" y="325" width="210" height="44" rx="12" fill="#082f49" stroke="#38bdf8"/><text x="132" y="354" fill="#e0f2fe">Schema Valid</text>
+<rect x="350" y="325" width="210" height="44" rx="12" fill="#1e1b4b" stroke="#818cf8"/><text x="372" y="354" fill="#ede9fe">Quality Scored</text>
+<rect x="590" y="325" width="210" height="44" rx="12" fill="#052e2b" stroke="#2dd4bf"/><text x="612" y="354" fill="#ccfbf1">Failures Detected</text>
+<rect x="830" y="325" width="210" height="44" rx="12" fill="#14532d" stroke="#4ade80"/><text x="852" y="354" fill="#dcfce7">Revision Path</text>
+</g>
+<text x="70" y="458" fill="#67e8f9" font-family="Segoe UI,Arial" font-size="24" font-weight="800">GENERATIVE_CONTENT_PROMPT_HARNESS_HOLDS</text>
+<text x="70" y="490" fill="#cbd5e1" font-family="Segoe UI,Arial" font-size="17">Quest • Dialogue • Character • Event • Tutorial</text>
+</svg>
