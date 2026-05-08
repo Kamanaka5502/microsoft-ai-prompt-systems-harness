@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/prompt_harness_hero.svg" width="100%" alt="Microsoft AI Prompt Systems Harness" />
+  <img src="assets/prompt_harness_hero.jpg" width="100%" alt="Microsoft AI Prompt Systems Harness proof chain" />
 </p>
 
 <h1 align="center">Microsoft AI Prompt Systems Harness</h1>
