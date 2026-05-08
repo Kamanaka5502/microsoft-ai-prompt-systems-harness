@@ -15,6 +15,17 @@ CASES = [
     ('tutorial', 'match-three power-up', 'first-time players', 'clear'),
 ]
 
+FAILURE_PROBE = {
+    'format': 'quest',
+    'title': 'Broken Packet',
+    'audience': 'casual players',
+    'tone': 'playful',
+    'content': 'Too short.',
+    'constraints_satisfied': [],
+    'failure_risks': ['missing structure', 'low clarity', 'not production ready'],
+    'revision_notes': [],
+}
+
 
 def canonical(obj) -> str:
     return json.dumps(obj, sort_keys=True, separators=(',', ':'))
@@ -44,6 +55,22 @@ def build_proof_pack() -> dict:
             'receipt_hash': sha256(canonical(receipt_material).encode()).hexdigest(),
         })
 
+    probe_evaluation = evaluate_packet(FAILURE_PROBE)
+    probe_failures = detect_failure_modes(FAILURE_PROBE, probe_evaluation)
+    probe_repairs = revision_path(probe_failures)
+    failure_probe = {
+        'probe': 'intentionally_broken_packet',
+        'evaluation': probe_evaluation,
+        'failure_modes': probe_failures,
+        'revision_path': probe_repairs,
+        'probe_hash': sha256(canonical({
+            'packet': FAILURE_PROBE,
+            'evaluation': probe_evaluation,
+            'failure_modes': probe_failures,
+            'revision_path': probe_repairs,
+        }).encode()).hexdigest(),
+    }
+
     format_coverage = sorted({r['format'] for r in receipts})
     all_schema_valid = all(r['evaluation']['valid'] for r in receipts)
     quality_threshold_met = all(r['evaluation']['quality_score'] >= 0.64 for r in receipts)
@@ -54,6 +81,8 @@ def build_proof_pack() -> dict:
     production_ready_formats = [
         r['format'] for r in receipts if r['evaluation']['decision'] in {'ACCEPT', 'REVISE'}
     ]
+    failure_modes_detected = bool(failure_probe['failure_modes'])
+    failure_probe_repaired = bool(failure_probe['revision_path'])
 
     proof_material = {
         'law': 'generative.content.prompt.harness.v1',
@@ -64,6 +93,9 @@ def build_proof_pack() -> dict:
         'repeatability_threshold_met': repeatability_threshold_met,
         'revision_path_available': revision_path_available,
         'production_ready_formats': production_ready_formats,
+        'failure_probe_hash': failure_probe['probe_hash'],
+        'failure_modes_detected': failure_modes_detected,
+        'failure_probe_repaired': failure_probe_repaired,
         'receipt_hashes': [r['receipt_hash'] for r in receipts],
     }
     proof_hash = sha256(canonical(proof_material).encode()).hexdigest()
@@ -73,6 +105,8 @@ def build_proof_pack() -> dict:
         quality_threshold_met,
         repeatability_threshold_met,
         revision_path_available,
+        failure_modes_detected,
+        failure_probe_repaired,
         set(format_coverage) == set(CONTENT_FORMATS),
     ])
 
@@ -83,10 +117,12 @@ def build_proof_pack() -> dict:
         'schema_valid': all_schema_valid,
         'quality_threshold_met': quality_threshold_met,
         'repeatability_threshold_met': repeatability_threshold_met,
-        'failure_modes_detected': any(r['failure_modes'] for r in receipts),
+        'failure_modes_detected': failure_modes_detected,
+        'failure_probe_repaired': failure_probe_repaired,
         'revision_path_available': revision_path_available,
         'production_ready_formats': production_ready_formats,
         'proof_hash': proof_hash,
+        'failure_probe': failure_probe,
         'receipts': receipts,
     }
 
